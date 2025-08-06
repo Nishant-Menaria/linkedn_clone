@@ -21,6 +21,10 @@ app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/user', require('./routes/userRoutes'));
+app.get('/api/profile', (req, res) => {
+  console.log("Cookies received:", req.cookies);
+  res.send(req.cookies);
+});
 
 
 // MongoDB Connection
