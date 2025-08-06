@@ -24,7 +24,8 @@ const Login = () => {
       );
       
       localStorage.setItem('user', JSON.stringify(res.data.user));
-      // Cookies.set('token', res.data.token, { sameSite: 'None' });
+      console.log(res.data.token);
+      Cookies.set('token', res.data.token, { sameSite: 'None' });
 
       setUser(res.data.user); // ✅ update context so navbar reflects change
       navigate('/');
