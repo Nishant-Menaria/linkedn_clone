@@ -4,7 +4,7 @@ const {verifyToken ,isOwner} = require('../middlewares/authMiddleware.js');
 const {createPost,getAllPosts,toggleLikePost ,addComment,getUserProfile,getCommentsForPost ,editComment,deleteComment} = require('../controllers/postController');
 
 // Create post
-router.post('/', verifyToken, createPost);
+router.post('/',createPost);
 
 // Get all posts (public feed)
 router.get('/', getAllPosts);
