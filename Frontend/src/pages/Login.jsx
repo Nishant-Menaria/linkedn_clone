@@ -24,7 +24,7 @@ const Login = () => {
       );
       
       localStorage.setItem('user', JSON.stringify(res.data.user));
-      console.log(res.data);
+      console.log(res.data.token);
       Cookies.set('token', res.data.token, { sameSite: 'None' });
 
       setUser(res.data.user); // ✅ update context so navbar reflects change
