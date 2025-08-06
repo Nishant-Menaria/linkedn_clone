@@ -29,6 +29,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    Cookies.set('token', token, { secure: true, sameSite: 'None' });
     setUser(null);
     navigate('/login');
   };
