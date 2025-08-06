@@ -42,12 +42,10 @@ exports.login = async (req, res) => {
     expiresIn: '7d',
   });
   // Send token as HTTP-only cookie
-  res
-    .cookie('token', token, {
+  res.cookie('token', token, {
       httpOnly: true,
       secure: true, // use HTTPS in production
       sameSite: 'None',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    })
-    .json({ message: 'Login successful', user });
+    });
 };
