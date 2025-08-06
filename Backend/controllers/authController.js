@@ -48,5 +48,5 @@ exports.login = async (req, res) => {
       sameSite: 'None',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     })
-    .json({ message: 'Login successful', user });
+    .json({ message: 'Login successful', user ,token });
 };
