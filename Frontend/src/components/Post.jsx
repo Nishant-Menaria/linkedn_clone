@@ -56,6 +56,8 @@ const Post = ({ post }) => {
     try {
       const res = await axios.post(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comment`, {
         text: newComment,
+      },{
+        withCredentials: true
       });
       setComments([res.data, ...comments]);
       setNewComment("");
@@ -66,7 +68,9 @@ const Post = ({ post }) => {
 
   const handleDeleteComment = async (commentId) => {
     try {
-      await axios.delete(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comments/${commentId}`);
+      await axios.delete(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comments/${commentId}`,{
+        withCredentials: true
+      });
       setComments((prev) => prev.filter((c) => c._id !== commentId));
     } catch (err) {
       console.error("Failed to delete comment", err);
@@ -82,6 +86,8 @@ const Post = ({ post }) => {
     try {
       const res = await axios.put(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comments/${commentId}`, {
         text: editedText,
+      },{
+        withCredentials: true
       });
       setComments((prev) =>
         prev.map((c) =>
