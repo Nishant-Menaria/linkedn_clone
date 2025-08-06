@@ -10,7 +10,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5001/api/auth/register', form, { withCredentials: true });
+      await axios.post('https://linkedn-clone.onrender.com/api/auth/register', form, { withCredentials: true });
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');

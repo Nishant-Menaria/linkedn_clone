@@ -19,7 +19,7 @@ const Post = ({ post }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/posts/${post._id}/comments`);
+        const res = await axios.get(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comments`);
         setComments(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         console.error("Error fetching comments:", err);
@@ -36,7 +36,7 @@ const Post = ({ post }) => {
 
   const handleLike = async () => {
     try {
-      const res = await axios.post(`http://localhost:5001/api/posts/${post._id}/like`);
+      const res = await axios.post(`https://linkedn-clone.onrender.com/api/posts/${post._id}/like`);
       const updatedLikes = res.data.likes;
   
       setLikes(updatedLikes);
@@ -54,7 +54,7 @@ const Post = ({ post }) => {
     if (!newComment.trim()) return;
 
     try {
-      const res = await axios.post(`http://localhost:5001/api/posts/${post._id}/comment`, {
+      const res = await axios.post(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comment`, {
         text: newComment,
       });
       setComments([res.data, ...comments]);
@@ -66,7 +66,7 @@ const Post = ({ post }) => {
 
   const handleDeleteComment = async (commentId) => {
     try {
-      await axios.delete(`http://localhost:5001/api/posts/${post._id}/comments/${commentId}`);
+      await axios.delete(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comments/${commentId}`);
       setComments((prev) => prev.filter((c) => c._id !== commentId));
     } catch (err) {
       console.error("Failed to delete comment", err);
@@ -80,7 +80,7 @@ const Post = ({ post }) => {
 
   const handleUpdateComment = async (commentId) => {
     try {
-      const res = await axios.put(`http://localhost:5001/api/posts/${post._id}/comments/${commentId}`, {
+      const res = await axios.put(`https://linkedn-clone.onrender.com/api/posts/${post._id}/comments/${commentId}`, {
         text: editedText,
       });
       setComments((prev) =>

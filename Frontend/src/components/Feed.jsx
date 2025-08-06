@@ -11,7 +11,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('http://localhost:5001/api/posts');
+      const res = await axios.get('https://linkedn-clone.onrender.com/api/posts');
       setPosts(res.data);
     } catch (err) {
       console.error('Error fetching posts:', err);
@@ -30,7 +30,7 @@ const Feed = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5001/api/posts',
+        'https://linkedn-clone.onrender.com/api/posts',
         { content: newPost ,
           user:user
         },

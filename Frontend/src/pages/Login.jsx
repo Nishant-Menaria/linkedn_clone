@@ -18,7 +18,7 @@ const Login = () => {
     setError('');
     try {
       const res = await axios.post(
-        'http://localhost:5001/api/auth/login',
+        'https://linkedn-clone.onrender.com/api/auth/login',
         { email, password },
         { withCredentials: true }
       );

@@ -11,7 +11,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/user/profile/${userId}`);
+        const res = await axios.get(`https://linkedn-clone.onrender.com/api/user/profile/${userId}`);
         setUserInfo(res.data.user);
         setUserPosts(res.data.posts);
       } catch (err) {
