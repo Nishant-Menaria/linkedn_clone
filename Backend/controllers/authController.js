@@ -38,11 +38,9 @@ exports.login = async (req, res) => {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
 
-  console.log('JWT_SECRET:', process.env.JWT_SECRET);
   const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
     expiresIn: '7d',
   });
-  console.log(token);
   // Send token as HTTP-only cookie
   res
     .cookie('token', token, {
