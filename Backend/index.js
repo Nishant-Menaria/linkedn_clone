@@ -21,9 +21,13 @@ app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/user', require('./routes/userRoutes'));
-app.get('/api/profile', (req, res) => {
-  console.log("Cookies received:", req.cookies);
-  res.send(req.cookies);
+app.post('/logout', (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'None',
+  });
+  return res.status(200).json({ message: 'Logged out successfully' });
 });
 
 

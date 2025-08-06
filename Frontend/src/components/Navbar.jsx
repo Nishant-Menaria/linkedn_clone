@@ -27,9 +27,11 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async() => {
     localStorage.removeItem('user');
-    Cookies.set('token', token, { secure: true, sameSite: 'None' });
+    await axios.post('https://linkedn-clone.onrender.com/logout', {}, {
+      withCredentials: true
+    });
     setUser(null);
     navigate('/login');
   };
